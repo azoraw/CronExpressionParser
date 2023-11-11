@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum CronRule {
+public enum CronField {
     MINUTE(0, 59),
     HOUR(0, 23),
     DAY_OF_MONTH(1, 31),

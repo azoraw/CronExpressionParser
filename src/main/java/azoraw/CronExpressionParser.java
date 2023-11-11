@@ -23,11 +23,11 @@ class CronExpressionParser {
     String parse(String input) {
         final String[] splitInput = input.split(" ");
 
-        addLine(MINUTE, cronNumericParser.parse(splitInput[0], CronRule.MINUTE));
-        addLine(HOUR, cronNumericParser.parse(splitInput[1], CronRule.HOUR));
-        addLine(DAY_OF_MONTH, cronNumericParser.parse(splitInput[2], CronRule.DAY_OF_MONTH));
-        addLine(MONTH, cronNumericParser.parse(splitInput[3], CronRule.MONTH));
-        addLine(DAY_OF_WEEK, cronNumericParser.parse(splitInput[4], CronRule.DAY_OF_WEEK));
+        addLine(MINUTE, cronNumericParser.parse(splitInput[0], CronField.MINUTE));
+        addLine(HOUR, cronNumericParser.parse(splitInput[1], CronField.HOUR));
+        addLine(DAY_OF_MONTH, cronNumericParser.parse(splitInput[2], CronField.DAY_OF_MONTH));
+        addLine(MONTH, cronNumericParser.parse(splitInput[3], CronField.MONTH));
+        addLine(DAY_OF_WEEK, cronNumericParser.parse(splitInput[4], CronField.DAY_OF_WEEK));
         addLine(COMMAND, splitInput[5]);
         return outputBuilder.toString();
     }

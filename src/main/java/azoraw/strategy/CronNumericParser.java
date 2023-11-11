@@ -1,6 +1,6 @@
 package azoraw.strategy;
 
-import azoraw.CronRule;
+import azoraw.CronField;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ public class CronNumericParser {
 
     private final List<ParsingStrategy> strategies = List.of(new CommaStrategy(), new FromToStrategy(), new StarStrategy(), new OnlyDigitsStrategy());
 
-    public String parse(String input, CronRule cronRule) {
+    public String parse(String input, CronField cronField) {
         return findOneStrategy(input)
-                .process(input, cronRule);
+                .process(input, cronField);
     }
 
     private ParsingStrategy findOneStrategy(String input) {

@@ -1,6 +1,6 @@
 package azoraw.strategy;
 
-import azoraw.CronRule;
+import azoraw.CronField;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,9 +15,9 @@ class CommaStrategy implements ParsingStrategy {
     }
 
     @Override
-    public String process(String input, CronRule cronRule) {
+    public String process(String input, CronField cronField) {
         final String[] split = input.split(",");
-        validate(split, cronRule);
+        validate(split, cronField);
         final StringBuilder stringBuilder = new StringBuilder();
         for (String s : split) {
             stringBuilder.append(parseInt(s));
@@ -26,11 +26,11 @@ class CommaStrategy implements ParsingStrategy {
         return stringBuilder.toString();
     }
 
-    private void validate(String[] numbers, CronRule cronRule) {
-        validateBounds(numbers, cronRule);
+    private void validate(String[] numbers, CronField cronField) {
+        validateBounds(numbers, cronField);
     }
 
-    private void validateBounds(String[] numbers, CronRule cronRule) {
+    private void validateBounds(String[] numbers, CronField cronField) {
         List<Integer> intList = Arrays.stream(numbers)
                 .map(Integer::parseInt)
                 .toList();
@@ -38,7 +38,7 @@ class CommaStrategy implements ParsingStrategy {
         int max = Collections.max(intList);
         int min = Collections.min(intList);
 
-        if (max > cronRule.getMax() || min < cronRule.getMin()) {
+        if (max > cronField.getMax() || min < cronField.getMin()) {
             throw new IllegalArgumentException("Numbers out of bounds");
         }
     }

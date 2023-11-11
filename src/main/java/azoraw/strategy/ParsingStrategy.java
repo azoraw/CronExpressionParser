@@ -1,9 +1,9 @@
 package azoraw.strategy;
 
-import azoraw.CronRule;
+import azoraw.CronField;
 
 interface ParsingStrategy {
     boolean canProcess(String input);
 
-    String process(String input, CronRule cronRule);
+    String process(String input, CronField cronField);
 }

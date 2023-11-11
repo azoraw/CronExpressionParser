@@ -1,6 +1,6 @@
 package azoraw.strategy;
 
-import azoraw.CronRule;
+import azoraw.CronField;
 
 import static java.lang.Integer.parseInt;
 
@@ -11,14 +11,14 @@ class OnlyDigitsStrategy implements ParsingStrategy {
     }
 
     @Override
-    public String process(String input, CronRule cronRule) {
-        validate(input, cronRule);
+    public String process(String input, CronField cronField) {
+        validate(input, cronField);
         return input;
     }
 
-    private void validate(String input, CronRule cronRule) {
+    private void validate(String input, CronField cronField) {
         final int number = parseInt(input);
-        if (number < cronRule.getMin() || number > cronRule.getMax()) {
+        if (number < cronField.getMin() || number > cronField.getMax()) {
             throw new IllegalArgumentException("Numbers out of bounds");
         }
     }

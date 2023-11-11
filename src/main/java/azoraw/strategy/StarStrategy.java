@@ -1,6 +1,6 @@
 package azoraw.strategy;
 
-import azoraw.CronRule;
+import azoraw.CronField;
 
 class StarStrategy implements ParsingStrategy {
     @Override
@@ -9,9 +9,9 @@ class StarStrategy implements ParsingStrategy {
     }
 
     @Override
-    public String process(String input, CronRule cronRule) {
+    public String process(String input, CronField cronField) {
         final StringBuilder stringBuilder = new StringBuilder();
-        for (int i = cronRule.getMin(); i <= cronRule.getMax(); i++) {
+        for (int i = cronField.getMin(); i <= cronField.getMax(); i++) {
             stringBuilder.append(i);
             stringBuilder.append(" ");
         }
