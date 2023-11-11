@@ -1,6 +1,9 @@
 package azoraw;
 
-import static azoraw.Validator.validateBounds;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static java.lang.Integer.parseInt;
 
 public class CommaStrategy implements ParsingStrategy {
@@ -23,6 +26,19 @@ public class CommaStrategy implements ParsingStrategy {
 
     private void validate(String[] numbers, CronRule cronRule) {
         validateBounds(numbers, cronRule);
+    }
+
+    private void validateBounds(String[] numbers, CronRule cronRule) {
+        List<Integer> intList = Arrays.stream(numbers)
+                .map(Integer::parseInt)
+                .toList();
+
+        int max = Collections.max(intList);
+        int min = Collections.min(intList);
+
+        if (max > cronRule.getMax() || min < cronRule.getMin()) {
+            throw new IllegalArgumentException("Numbers out of bounds");
+        }
     }
 }
 
