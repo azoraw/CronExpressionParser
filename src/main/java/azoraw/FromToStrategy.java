@@ -27,5 +27,4 @@ public class FromToStrategy implements ParsingStrategy {
             throw new IllegalArgumentException("Numbers out of bounds");
         }
     }
-
 }

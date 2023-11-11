@@ -1,6 +1,6 @@
 package azoraw;
 
-public class StarStrategy implements ParsingStrategy{
+public class StarStrategy implements ParsingStrategy {
     @Override
     public boolean canProcess(String input) {
         return input.equals("*");
