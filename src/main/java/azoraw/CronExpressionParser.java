@@ -26,7 +26,7 @@ class CronExpressionParser {
         addLine(DAY_OF_MONTH, cronNumericParser.parse(splitInput[2], CronRule.DAY_OF_MONTH));
         addLine(MONTH, cronNumericParser.parse(splitInput[3], CronRule.MONTH));
         addLine(DAY_OF_WEEK, cronNumericParser.parse(splitInput[4], CronRule.DAY_OF_WEEK));
-        addLine(COMMAND, "/");
+        addLine(COMMAND,splitInput[5]);
         return outputBuilder.toString();
     }
 
