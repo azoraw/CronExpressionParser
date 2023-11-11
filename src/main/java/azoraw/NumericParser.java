@@ -10,7 +10,7 @@ class NumericParser {
     }
 
     String parseHour(String input) {
-        return parseStar(CronRule.HOUR);
+        return parseComma(input);
     }
 
     String parsDayOfMonth(String input) {
@@ -23,6 +23,16 @@ class NumericParser {
 
     String parseDayOfWeek(String input) {
         return parseStar(CronRule.DAY_OF_WEEK);
+    }
+
+    private static String parseComma(String input) {
+        final String[] split = input.split(",");
+        final StringBuilder stringBuilder = new StringBuilder();
+        for (String s : split) {
+            stringBuilder.append(parseInt(s));
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString();
     }
 
     private static String parseFromTo(String input) {
