@@ -1,12 +1,19 @@
-package azoraw;
+package azoraw.strategy;
+
+import azoraw.CronRule;
+import azoraw.strategy.CommaStrategy;
+import azoraw.strategy.FromToStrategy;
+import azoraw.strategy.OnlyDigitsStrategy;
+import azoraw.strategy.ParsingStrategy;
+import azoraw.strategy.StarStrategy;
 
 import java.util.List;
 
-class CronNumericParser {
+public class CronNumericParser {
 
     private final List<ParsingStrategy> strategies = List.of(new CommaStrategy(), new FromToStrategy(), new StarStrategy(), new OnlyDigitsStrategy());
 
-    String parse(String input, CronRule cronRule) {
+    public String parse(String input, CronRule cronRule) {
         return findOneStrategy(input)
                 .process(input, cronRule);
     }

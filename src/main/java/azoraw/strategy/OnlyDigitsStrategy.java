@@ -1,8 +1,10 @@
-package azoraw;
+package azoraw.strategy;
+
+import azoraw.CronRule;
 
 import static java.lang.Integer.parseInt;
 
-public class OnlyDigitsStrategy implements ParsingStrategy {
+class OnlyDigitsStrategy implements ParsingStrategy {
     @Override
     public boolean canProcess(String input) {
         return input.chars().allMatch(Character::isDigit);

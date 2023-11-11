@@ -1,5 +1,7 @@
 package azoraw;
 
+import azoraw.strategy.CronNumericParser;
+
 class CronExpressionParser {
 
     private static final int KEYS_LENGTH = 14;

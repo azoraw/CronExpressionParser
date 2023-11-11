@@ -1,6 +1,8 @@
-package azoraw;
+package azoraw.strategy;
 
-public interface ParsingStrategy {
+import azoraw.CronRule;
+
+interface ParsingStrategy {
     boolean canProcess(String input);
 
     String process(String input, CronRule cronRule);

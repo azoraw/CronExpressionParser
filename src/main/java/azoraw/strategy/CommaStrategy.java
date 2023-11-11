@@ -1,4 +1,6 @@
-package azoraw;
+package azoraw.strategy;
+
+import azoraw.CronRule;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,7 +8,7 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-public class CommaStrategy implements ParsingStrategy {
+class CommaStrategy implements ParsingStrategy {
     @Override
     public boolean canProcess(String input) {
         return input.contains(",");

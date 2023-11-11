@@ -1,8 +1,10 @@
-package azoraw;
+package azoraw.strategy;
+
+import azoraw.CronRule;
 
 import static java.lang.Integer.parseInt;
 
-public class FromToStrategy implements ParsingStrategy {
+class FromToStrategy implements ParsingStrategy {
     @Override
     public boolean canProcess(String input) {
         return input.contains("-");

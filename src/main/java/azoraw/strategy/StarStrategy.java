@@ -1,6 +1,8 @@
-package azoraw;
+package azoraw.strategy;
 
-public class StarStrategy implements ParsingStrategy {
+import azoraw.CronRule;
+
+class StarStrategy implements ParsingStrategy {
     @Override
     public boolean canProcess(String input) {
         return input.equals("*");
