@@ -2,27 +2,44 @@ package azoraw;
 
 import static java.lang.Integer.parseInt;
 
-class NumericParser {
+class CronFragmentsParser {
 
     String parseMinute(String input) {
-        //return parseStar(CronRule.MINUTE);
-        return parseFromTo(input);
+        return strategy(input, CronRule.MINUTE);
     }
 
     String parseHour(String input) {
-        return parseComma(input);
+        return strategy(input, CronRule.HOUR);
     }
 
     String parsDayOfMonth(String input) {
-        return parseStar(CronRule.DAY_OF_MONTH);
+        return strategy(input, CronRule.DAY_OF_MONTH);
     }
 
     String parseMonth(String input) {
-        return parseStar(CronRule.MONTH);
+        return strategy(input, CronRule.MONTH);
     }
 
     String parseDayOfWeek(String input) {
-        return parseStar(CronRule.DAY_OF_WEEK);
+        return strategy(input, CronRule.DAY_OF_WEEK);
+    }
+
+    private String strategy(String input, CronRule cronRule) {
+        if (isFromTo(input)) {
+            return parseFromTo(input);
+        } else if (isStar(input)) {
+            return parseStar(cronRule);
+        } else {
+            return parseComma(input);
+        }
+    }
+
+    private boolean isStar(String input) {
+        return input.equals("*");
+    }
+
+    private boolean isFromTo(String input) {
+        return input.contains("-");
     }
 
     private static String parseComma(String input) {
