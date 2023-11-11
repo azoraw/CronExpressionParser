@@ -10,22 +10,22 @@ class CronExpressionParser {
     private static final String DAY_OF_WEEK = "day of week";
     private static final String COMMAND = "command";
 
-    private final CronFragmentsParser cronFragmentsParser;
+    private final CronNumericParser cronNumericParser;
     private final StringBuilder outputBuilder;
 
     CronExpressionParser() {
-        cronFragmentsParser = new CronFragmentsParser();
+        cronNumericParser = new CronNumericParser();
         outputBuilder = new StringBuilder();
     }
 
     String parse(String input) {
         final String[] splitInput = input.split(" ");
 
-        addLine(MINUTE, cronFragmentsParser.parseMinute(splitInput[0]));
-        addLine(HOUR, cronFragmentsParser.parseHour(splitInput[1]));
-        addLine(DAY_OF_MONTH, cronFragmentsParser.parsDayOfMonth(splitInput[2]));
-        addLine(MONTH, cronFragmentsParser.parseMonth(splitInput[3]));
-        addLine(DAY_OF_WEEK, cronFragmentsParser.parseDayOfWeek(splitInput[4]));
+        addLine(MINUTE, cronNumericParser.parse(splitInput[0], CronRule.MINUTE));
+        addLine(HOUR, cronNumericParser.parse(splitInput[1], CronRule.HOUR));
+        addLine(DAY_OF_MONTH, cronNumericParser.parse(splitInput[2], CronRule.DAY_OF_MONTH));
+        addLine(MONTH, cronNumericParser.parse(splitInput[3], CronRule.MONTH));
+        addLine(DAY_OF_WEEK, cronNumericParser.parse(splitInput[4], CronRule.DAY_OF_WEEK));
         addLine(COMMAND, "/");
         return outputBuilder.toString();
     }
