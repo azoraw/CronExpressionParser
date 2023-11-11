@@ -1,6 +1,6 @@
 package azoraw;
 
-public class CronExpressionParser {
+class CronExpressionParser {
 
     private static final int KEYS_LENGTH = 14;
     private static final String MINUTE = "minute";
@@ -10,18 +10,22 @@ public class CronExpressionParser {
     private static final String DAY_OF_WEEK = "day of week";
     private static final String COMMAND = "command";
 
+    private final NumericParser numericParser;
     private final StringBuilder outputBuilder;
 
-    public CronExpressionParser() {
+    CronExpressionParser() {
+        numericParser = new NumericParser();
         outputBuilder = new StringBuilder();
     }
 
     String parse(String input) {
-        addLine(MINUTE, "0");
-        addLine(HOUR, "0");
-        addLine(DAY_OF_MONTH, "1");
-        addLine(MONTH, "1");
-        addLine(DAY_OF_WEEK, "0");
+        final String[] splitInput = input.split(" ");
+
+        addLine(MINUTE, numericParser.parseMinute(splitInput[0]));
+        addLine(HOUR, numericParser.parseHour(splitInput[1]));
+        addLine(DAY_OF_MONTH, numericParser.parsDayOfMonth(splitInput[2]));
+        addLine(MONTH, numericParser.parseMonth(splitInput[3]));
+        addLine(DAY_OF_WEEK, numericParser.parseDayOfWeek(splitInput[4]));
         addLine(COMMAND, "/");
         return outputBuilder.toString();
     }
